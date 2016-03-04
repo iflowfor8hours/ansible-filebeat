@@ -7,6 +7,8 @@ fashion.
 Requirements
 ------------
 
+* Run `./test/gen-filebeat-cert.sh` to generate the necessary certificate and key files to use filebeat over SSL.
+
 Role Variables
 --------------
 
