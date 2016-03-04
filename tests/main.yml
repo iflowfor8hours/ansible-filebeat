@@ -1,0 +1,17 @@
+---
+- hosts: all
+  sudo: true
+  roles:
+    - role: iflowfor8hours.filebeat
+      filebeat_prospectors:
+        - path: "/var/log/syslog"
+          document_type: "syslog"
+        - path: "/var/log/auth.log"
+          document_type: "auth"
+      elasticsearch_addresses:
+        - 'http://172.19.22.1:9200'
+      filebeat_ssl_enabled: true
+      filebeat_certificate_path: test/filebeat.crt
+      filebeat_certificate_key_path: test/filebeat.key
+      filebeat_certificate_authorities:
+        - /etc/filebeat/ssl/filebeat.crt

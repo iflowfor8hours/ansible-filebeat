@@ -1,0 +1,10 @@
+---
+galaxy_info:
+  author: fl8s
+  description: A filebeat client role
+  license: MIT
+  min_ansible_version: 1.9.4
+  platforms:
+  - name: Debian
+    versions:
+    - jessie

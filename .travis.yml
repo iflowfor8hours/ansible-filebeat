@@ -1,0 +1,20 @@
+---
+
+language: "python"
+python: "2.7"
+
+env:
+  - SITE="tests/main.yml -i 'localhost,'"
+
+install:
+  - "pip install ansible"
+  - "printf '[defaults]\\nroles_path = ../' > ansible.cfg"
+
+script:
+  - "ansible-playbook $SITE --syntax-check"
+  - "ansible-playbook $SITE --connection=local -vvvv"
+  - >
+    ansible-playbook $SITE --connection=local
+    | grep -q "changed=0.*failed=0"
+    && (echo "Idempotence test: PASS" && exit 0)
+    || (echo "Idempotence test: FAIL" && exit 1)
